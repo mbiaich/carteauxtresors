@@ -1,6 +1,7 @@
 package com.work.exo.carteauxtresors.service;
 
 import com.work.exo.carteauxtresors.configuration.exception.CatException;
+import com.work.exo.carteauxtresors.configuration.exception.CatFunctionalException;
 import com.work.exo.carteauxtresors.model.Map;
 
 import java.io.File;
@@ -22,7 +23,7 @@ public interface IMapService {
 	 * 
 	 * @param map
 	 */
-	void startMovement(Map map);
+	void startMovement(Map map) throws CatFunctionalException;
 
 	/**
 	 * Methode permettant de construire le contenu du fichier de sortie via les

@@ -2,9 +2,9 @@ package com.work.exo.carteauxtresors.configuration.exception;
 
 import com.work.exo.carteauxtresors.enums.ErrorEnum;
 
-public class CatFunctionnalException extends CatException {
+public class CatFunctionalException extends CatException {
 
-    public CatFunctionnalException(ErrorEnum errorEnum) {
+    public CatFunctionalException(ErrorEnum errorEnum) {
         super(errorEnum);
     }
 }

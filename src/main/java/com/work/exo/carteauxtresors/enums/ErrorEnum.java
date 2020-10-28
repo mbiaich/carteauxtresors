@@ -6,14 +6,16 @@ import lombok.Getter;
 public enum ErrorEnum {
 
 	ET001("Problème lors de la lecture du fichier"),
-	ET002("Problème lors de la lecture du fichier"),
+	ET002("Problème lors de l'écriture du fichier"),
 	ET003("Erreur technique au set du nombre de ligne et de colonne de la map"),
 	ET004("Erreur technique lors de l'ajout d'une montagne à la map"),
 	ET005("Erreur technique lors de l'ajout d'un trésor à la map"),
 	ET006("Erreur technique lors de l'ajout d'un personnage à la map"),
 
 	EF001("Fichier vide"),
-	EF002("Type d'élément non pris en charge");
+	EF002("Type d'élément non pris en charge"),
+	EF003("Problème avec les dimensions de la carte"),
+	EF004("Aucun personnage trouvé");
 
 	private String libelle;
 

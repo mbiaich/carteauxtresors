@@ -1,11 +1,11 @@
 package com.work.exo.carteauxtresors.service.impl;
 
 import com.work.exo.carteauxtresors.configuration.exception.CatException;
-import com.work.exo.carteauxtresors.configuration.exception.CatFunctionnalException;
+import com.work.exo.carteauxtresors.configuration.exception.CatFunctionalException;
 import com.work.exo.carteauxtresors.configuration.exception.CatTechnicalException;
 import com.work.exo.carteauxtresors.enums.ErrorEnum;
-import com.work.exo.carteauxtresors.enums.OrientationEnum;
 import com.work.exo.carteauxtresors.enums.MovementEnum;
+import com.work.exo.carteauxtresors.enums.OrientationEnum;
 import com.work.exo.carteauxtresors.enums.TypeElementEnum;
 import com.work.exo.carteauxtresors.model.Adventurer;
 import com.work.exo.carteauxtresors.model.Map;
@@ -15,6 +15,7 @@ import com.work.exo.carteauxtresors.service.IMapService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -42,7 +43,8 @@ public class MapServiceImpl implements IMapService {
 		}
 	}
 
-	public void startMovement(Map map) {
+	public void startMovement(Map map) throws CatFunctionalException {
+		checkMapAndAdventurer(map);
 		map.getAdventurerList().forEach(adventurer -> Arrays.asList(adventurer.getTrip().split("")).forEach(s -> {
 			if (MovementEnum.D.name().equals(s) || MovementEnum.G.name().equals(s)) {
 				adventurer.turn(MovementEnum.valueOf(s));
@@ -101,7 +103,7 @@ public class MapServiceImpl implements IMapService {
 				break;
 			default :
 				LOGGER.error(String.format("Cas non pris en charge : %s - ligne %s.", type, line));
-				throw new CatFunctionnalException(ErrorEnum.EF002);
+				throw new CatFunctionalException(ErrorEnum.EF002);
 		}
 	}
 
@@ -153,6 +155,15 @@ public class MapServiceImpl implements IMapService {
 			map.getAdventurerList().add(adventurer);
 		} catch (Exception e) {
 			throw new CatTechnicalException(ErrorEnum.ET006, e);
+		}
+	}
+
+	private void checkMapAndAdventurer(Map map) throws CatFunctionalException {
+		if(map.getNbColumn() == 0 || map.getNbLine() == 0) {
+			throw new CatFunctionalException(ErrorEnum.EF003);
+		}
+		if(CollectionUtils.isEmpty(map.getAdventurerList())) {
+			throw new CatFunctionalException(ErrorEnum.EF004);
 		}
 	}
 

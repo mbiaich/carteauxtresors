@@ -1,6 +1,6 @@
 package com.work.exo.carteauxtresors.service;
 
-import com.work.exo.carteauxtresors.configuration.exception.CatFunctionnalException;
+import com.work.exo.carteauxtresors.configuration.exception.CatFunctionalException;
 import com.work.exo.carteauxtresors.configuration.exception.CatTechnicalException;
 
 import java.io.File;
@@ -13,7 +13,7 @@ public interface IResourceService {
 	 * @param filePath
 	 * @return
 	 */
-	File getFile(String filePath) throws CatFunctionnalException;
+	File getFile(String filePath) throws CatFunctionalException;
 
 	/**
 	 * Methode permettant de générer le fichier de sortie

@@ -1,6 +1,6 @@
 package com.work.exo.carteauxtresors.service.impl;
 
-import com.work.exo.carteauxtresors.configuration.exception.CatFunctionnalException;
+import com.work.exo.carteauxtresors.configuration.exception.CatFunctionalException;
 import com.work.exo.carteauxtresors.configuration.exception.CatTechnicalException;
 import com.work.exo.carteauxtresors.enums.ErrorEnum;
 import com.work.exo.carteauxtresors.service.IResourceService;
@@ -17,10 +17,10 @@ public class ResourceServiceImpl implements IResourceService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ResourceServiceImpl.class);
 
-	public File getFile(String filePath) throws CatFunctionnalException {
+	public File getFile(String filePath) throws CatFunctionalException {
 		File file = new File(filePath);
 		if (file.length() == 0)
-			throw new CatFunctionnalException(ErrorEnum.EF001);
+			throw new CatFunctionalException(ErrorEnum.EF001);
 		return file;
 	}
 
